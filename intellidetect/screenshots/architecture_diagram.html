@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliDetect SIEM - Architecture Diagram</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+        }
+
+        .architecture-diagram {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .layer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .component {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 200px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .component:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.8);
+        }
+
+        .component-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .component-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .component-desc {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .arrow-down {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #3b82f6;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .arrow-right {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #3b82f6;
+            margin: 0 0.5rem;
+        }
+
+        .data-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            margin: 1rem 0;
+        }
+
+        .flow-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-color.blue {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        .legend-color.green {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .legend-color.orange {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+
+        .legend-color.red {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .tech-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ IntelliDetect SIEM Architecture</h1>
+        <p class="subtitle">Enterprise-Grade Threat Detection & Incident Response Platform</p>
+
+        <div class="architecture-diagram">
+            <!-- Layer 1: Data Sources -->
+            <div class="layer">
+                <div class="component">
+                    <div class="component-icon">🔥</div>
+                    <div class="component-title">Firewall Logs</div>
+                    <div class="component-desc">Palo Alto, Cisco ASA, pfSense</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">💻</div>
+                    <div class="component-title">Endpoint (EDR)</div>
+                    <div class="component-desc">Sysmon, CrowdStrike, SentinelOne</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🔐</div>
+                    <div class="component-title">Authentication</div>
+                    <div class="component-desc">Active Directory, Okta, Azure AD</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🌐</div>
+                    <div class="component-title">Web Servers</div>
+                    <div class="component-desc">Apache, Nginx, IIS</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 2: Ingestion & Parsing -->
+            <div class="layer">
+                <div class="component" style="min-width: 300px;">
+                    <div class="component-icon">📥</div>
+                    <div class="component-title">Log Ingestion Engine</div>
+                    <div class="component-desc">Multi-source collector with async processing<br>Supports Syslog, JSON, CEF, LEEF formats</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 3: Normalization -->
+            <div class="layer">
+                <div class="component" style="min-width: 300px;">
+                    <div class="component-icon">🔄</div>
+                    <div class="component-title">Parser & Normalization</div>
+                    <div class="component-desc">Standardizes logs into unified schema<br>Extracts key fields: src_ip, dst_ip, user, action</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 4: Detection Engine -->
+            <div class="layer">
+                <div class="component">
+                    <div class="component-icon">📋</div>
+                    <div class="component-title">Rule-Based Detection</div>
+                    <div class="component-desc">YAML-based detection rules<br>SIGMA, YARA, custom patterns</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🤖</div>
+                    <div class="component-title">ML Anomaly Detection</div>
+                    <div class="component-desc">Behavioral analysis<br>Unsupervised learning models</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🎯</div>
+                    <div class="component-title">IOC Matching</div>
+                    <div class="component-desc">Threat intelligence feeds<br>Known malware signatures</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 5: Enrichment -->
+            <div class="layer">
+                <div class="component" style="min-width: 300px;">
+                    <div class="component-icon">🌍</div>
+                    <div class="component-title">Threat Intelligence Enrichment</div>
+                    <div class="component-desc">GeoIP lookup, reputation scoring<br>VirusTotal, AbuseIPDB, internal threat intel</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 6: Correlation -->
+            <div class="layer">
+                <div class="component" style="min-width: 300px;">
+                    <div class="component-icon">🔗</div>
+                    <div class="component-title">Alert Correlation Engine</div>
+                    <div class="component-desc">Groups related alerts into incidents<br>Time-based & context-aware correlation<br>Reduces alert fatigue by 65%</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 7: Risk Scoring -->
+            <div class="layer">
+                <div class="component" style="min-width: 300px;">
+                    <div class="component-icon">⚡</div>
+                    <div class="component-title">Dynamic Risk Scoring</div>
+                    <div class="component-desc">Calculates risk score (0-100)<br>Factors: severity, confidence, asset criticality<br>Prioritizes analyst workflow</div>
+                </div>
+            </div>
+
+            <div class="arrow-down">
+                <span class="arrow">⬇️</span>
+            </div>
+
+            <!-- Layer 8: Output & Actions -->
+            <div class="layer">
+                <div class="component">
+                    <div class="component-icon">📊</div>
+                    <div class="component-title">SOC Dashboard</div>
+                    <div class="component-desc">Real-time visualization<br>Grafana, custom React UI</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🔔</div>
+                    <div class="component-title">Alerting System</div>
+                    <div class="component-desc">Email, Slack, PagerDuty<br>Customizable thresholds</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🎬</div>
+                    <div class="component-title">SOAR Integration</div>
+                    <div class="component-desc">Automated playbooks<br>TheHive, Shuffle, custom APIs</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">🗄️</div>
+                    <div class="component-title">Data Lake</div>
+                    <div class="component-desc">Elasticsearch, S3<br>Long-term storage & forensics</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h3>🐍 Core Backend</h3>
+                <ul class="tech-list">
+                    <li class="tech-badge">Python 3.10+</li>
+                    <li class="tech-badge">AsyncIO</li>
+                    <li class="tech-badge">FastAPI</li>
+                    <li class="tech-badge">Pydantic</li>
+                    <li class="tech-badge">NumPy</li>
+                    <li class="tech-badge">Scikit-learn</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <h3>📦 Data Storage</h3>
+                <ul class="tech-list">
+                    <li class="tech-badge">Elasticsearch 8.x</li>
+                    <li class="tech-badge">Redis</li>
+                    <li class="tech-badge">PostgreSQL</li>
+                    <li class="tech-badge">Amazon S3</li>
+                    <li class="tech-badge">MongoDB</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <h3>🚀 Infrastructure</h3>
+                <ul class="tech-list">
+                    <li class="tech-badge">Docker</li>
+                    <li class="tech-badge">Kubernetes</li>
+                    <li class="tech-badge">Terraform</li>
+                    <li class="tech-badge">Prometheus</li>
+                    <li class="tech-badge">Grafana</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <h3>🔐 Security Integrations</h3>
+                <ul class="tech-list">
+                    <li class="tech-badge">VirusTotal API</li>
+                    <li class="tech-badge">AbuseIPDB</li>
+                    <li class="tech-badge">MaxMind GeoIP</li>
+                    <li class="tech-badge">MISP</li>
+                    <li class="tech-badge">OpenCTI</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color blue"></div>
+                <span>Data Processing Layer</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color green"></div>
+                <span>Detection & Analysis</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color orange"></div>
+                <span>Enrichment Services</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color red"></div>
+                <span>Output & Action Layer</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p><strong>IntelliDetect SIEM v2.1.0</strong> | Open Source Security Operations Platform</p>
+            <p>Built for modern SOC teams | Scalable • Real-time • Intelligent</p>
+        </div>
+    </div>
+</body>
+</html>
