@@ -1,0 +1,31 @@
+# Core dependencies
+Flask==3.0.0
+Flask-CORS==4.0.0
+PyYAML==6.0.1
+requests==2.31.0
+python-dateutil==2.8.2
+
+# Data processing
+pandas==2.1.4
+numpy==1.26.2
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Security
+cryptography==41.0.7
+
+# Utilities
+python-dotenv==1.0.0
+geoip2==4.8.0
+maxminddb==2.5.1
+
+# Async support
+aiohttp==3.9.1
+
+# Logging and monitoring
+python-json-logger==2.0.7
+
+# API documentation
+flasgger==0.9.7.1

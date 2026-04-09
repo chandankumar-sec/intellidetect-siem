@@ -1,0 +1,407 @@
+rules:
+  # ===================================================================
+  # BRUTE FORCE DETECTION RULES
+  # ===================================================================
+  - id: BRUTE_FORCE_001
+    name: "Brute Force Login Attempt"
+    description: "Multiple failed login attempts from the same source IP"
+    severity: HIGH
+    category: "Credential Access"
+    mitre_attack_id: "T1110"
+    threshold: 5
+    time_window: 300
+    enabled: true
+    log_sources:
+      - auth
+      - sysmon
+    fields:
+      source_ip: "src_ip"
+      username: "user"
+      event_type: "failed_login"
+    
+  - id: BRUTE_FORCE_002
+    name: "Distributed Brute Force Attack"
+    description: "Failed login attempts from multiple IPs targeting same account"
+    severity: CRITICAL
+    category: "Credential Access"
+    mitre_attack_id: "T1110.001"
+    threshold: 10
+    time_window: 600
+    enabled: true
+    log_sources:
+      - auth
+    fields:
+      username: "user"
+      event_type: "failed_login"
+
+  # ===================================================================
+  # PORT SCANNING DETECTION RULES
+  # ===================================================================
+  - id: PORT_SCAN_001
+    name: "Horizontal Port Scan"
+    description: "Single source IP scanning multiple destination ports"
+    severity: MEDIUM
+    category: "Discovery"
+    mitre_attack_id: "T1046"
+    threshold: 10
+    time_window: 60
+    enabled: true
+    log_sources:
+      - firewall
+    fields:
+      source_ip: "src_ip"
+      dest_port: "dest_port"
+      
+  - id: PORT_SCAN_002
+    name: "Vertical Port Scan"
+    description: "Single source IP scanning multiple destination hosts"
+    severity: MEDIUM
+    category: "Discovery"
+    mitre_attack_id: "T1046"
+    threshold: 5
+    time_window: 60
+    enabled: true
+    log_sources:
+      - firewall
+    fields:
+      source_ip: "src_ip"
+      dest_ip: "dest_ip"
+
+  # ===================================================================
+  # SUSPICIOUS PROCESS EXECUTION
+  # ===================================================================
+  - id: PROC_EXEC_001
+    name: "Suspicious PowerShell Execution"
+    description: "PowerShell with encoded command or bypass parameters"
+    severity: HIGH
+    category: "Execution"
+    mitre_attack_id: "T1059.001"
+    enabled: true
+    log_sources:
+      - sysmon
+    conditions:
+      - field: "process_name"
+        operator: "equals"
+        value: "powershell.exe"
+      - field: "command_line"
+        operator: "contains"
+        values:
+          - "-enc"
+          - "-encodedcommand"
+          - "-bypass"
+          - "hidden"
+          - "windowstyle hidden"
+
+  - id: PROC_EXEC_002
+    name: "Living Off The Land Binary (LOLBin)"
+    description: "Execution of known LOLBin utilities"
+    severity: HIGH
+    category: "Defense Evasion"
+    mitre_attack_id: "T1218"
+    enabled: true
+    log_sources:
+      - sysmon
+    conditions:
+      - field: "process_name"
+        operator: "in"
+        values:
+          - "certutil.exe"
+          - "bitsadmin.exe"
+          - "wmic.exe"
+          - "regsvr32.exe"
+          - "mshta.exe"
+          - "rundll32.exe"
+
+  - id: PROC_EXEC_003
+    name: "Process Injection Attempt"
+    description: "Suspicious process injection techniques detected"
+    severity: CRITICAL
+    category: "Defense Evasion"
+    mitre_attack_id: "T1055"
+    enabled: true
+    log_sources:
+      - sysmon
+    conditions:
+      - field: "event_id"
+        operator: "equals"
+        value: 8
+
+  # ===================================================================
+  # DATA EXFILTRATION DETECTION
+  # ===================================================================
+  - id: EXFIL_001
+    name: "Large Data Transfer"
+    description: "Unusually large outbound data transfer detected"
+    severity: HIGH
+    category: "Exfiltration"
+    mitre_attack_id: "T1041"
+    threshold_bytes: 104857600
+    enabled: true
+    log_sources:
+      - firewall
+    fields:
+      bytes_sent: "bytes_out"
+      dest_ip: "dest_ip"
+
+  - id: EXFIL_002
+    name: "Data Exfiltration via DNS"
+    description: "DNS tunneling or excessive DNS queries detected"
+    severity: HIGH
+    category: "Exfiltration"
+    mitre_attack_id: "T1048.003"
+    threshold: 100
+    time_window: 60
+    enabled: true
+    log_sources:
+      - firewall
+    fields:
+      dest_port: "dest_port"
+      protocol: "protocol"
+    conditions:
+      - field: "dest_port"
+        operator: "equals"
+        value: 53
+      - field: "query_length"
+        operator: "greater_than"
+        value: 50
+
+  # ===================================================================
+  # PRIVILEGE ESCALATION DETECTION
+  # ===================================================================
+  - id: PRIVESC_001
+    name: "Token Impersonation"
+    description: "Potential token impersonation attempt detected"
+    severity: CRITICAL
+    category: "Privilege Escalation"
+    mitre_attack_id: "T1134"
+    enabled: true
+    log_sources:
+      - sysmon
+    conditions:
+      - field: "event_id"
+        operator: "equals"
+        value: 10
+
+  - id: PRIVESC_002
+    name: "Service Account Abuse"
+    description: "Suspicious activity from service account"
+    severity: HIGH
+    category: "Privilege Escalation"
+    mitre_attack_id: "T1548"
+    enabled: true
+    log_sources:
+      - auth
+      - sysmon
+    conditions:
+      - field: "account_type"
+        operator: "equals"
+        value: "service"
+      - field: "new_process"
+        operator: "exists"
+        value: true
+
+  # ===================================================================
+  # LATERAL MOVEMENT DETECTION
+  # ===================================================================
+  - id: LATERAL_001
+    name: "Remote Desktop Protocol (RDP) Lateral Movement"
+    description: "RDP connection to multiple internal hosts"
+    severity: HIGH
+    category: "Lateral Movement"
+    mitre_attack_id: "T1021.001"
+    threshold: 3
+    time_window: 300
+    enabled: true
+    log_sources:
+      - firewall
+      - auth
+    fields:
+      source_ip: "src_ip"
+      dest_port: "dest_port"
+    conditions:
+      - field: "dest_port"
+        operator: "equals"
+        value: 3389
+
+  - id: LATERAL_002
+    name: "SMB Lateral Movement"
+    description: "SMB connection to administrative shares"
+    severity: HIGH
+    category: "Lateral Movement"
+    mitre_attack_id: "T1021.002"
+    enabled: true
+    log_sources:
+      - firewall
+    fields:
+      dest_port: "dest_port"
+    conditions:
+      - field: "dest_port"
+        operator: "in"
+        values: [445, 139]
+
+  - id: LATERAL_003
+    name: "PsExec Remote Execution"
+    description: "PsExec or similar remote execution tool detected"
+    severity: CRITICAL
+    category: "Lateral Movement"
+    mitre_attack_id: "T1021.002"
+    enabled: true
+    log_sources:
+      - sysmon
+    conditions:
+      - field: "process_name"
+        operator: "in"
+        values:
+          - "psexec.exe"
+          - "psexesvc.exe"
+          - "paexec.exe"
+
+  # ===================================================================
+  # MALWARE INDICATORS
+  # ===================================================================
+  - id: MALWARE_001
+    name: "Known Malicious Hash"
+    description: "File hash matches known malware signature"
+    severity: CRITICAL
+    category: "Malware"
+    mitre_attack_id: "T1204"
+    enabled: true
+    log_sources:
+      - sysmon
+    conditions:
+      - field: "file_hash"
+        operator: "in_list"
+        list_file: "data/rules/malicious_hashes.txt"
+
+  - id: MALWARE_002
+    name: "Command and Control (C2) Communication"
+    description: "Outbound connection to known C2 infrastructure"
+    severity: CRITICAL
+    category: "Command and Control"
+    mitre_attack_id: "T1071"
+    enabled: true
+    log_sources:
+      - firewall
+    conditions:
+      - field: "dest_ip"
+        operator: "in_threat_list"
+        list_type: "c2_servers"
+
+  # ===================================================================
+  # WEB APPLICATION ATTACKS
+  # ===================================================================
+  - id: WEB_001
+    name: "SQL Injection Attempt"
+    description: "SQL injection patterns detected in web requests"
+    severity: HIGH
+    category: "Initial Access"
+    mitre_attack_id: "T1190"
+    enabled: true
+    log_sources:
+      - apache
+    conditions:
+      - field: "request_uri"
+        operator: "regex"
+        pattern: "(?i)(union\\s+select|or\\s+1\\s*=\\s*1|'\\s*or\\s*'|drop\\s+table|insert\\s+into)"
+
+  - id: WEB_002
+    name: "Cross-Site Scripting (XSS) Attempt"
+    description: "XSS payload detected in web requests"
+    severity: MEDIUM
+    category: "Initial Access"
+    mitre_attack_id: "T1190"
+    enabled: true
+    log_sources:
+      - apache
+    conditions:
+      - field: "request_uri"
+        operator: "regex"
+        pattern: "(?i)(<script|javascript:|onerror=|onload=)"
+
+  - id: WEB_003
+    name: "Directory Traversal Attempt"
+    description: "Path traversal attack detected"
+    severity: HIGH
+    category: "Discovery"
+    mitre_attack_id: "T1083"
+    enabled: true
+    log_sources:
+      - apache
+    conditions:
+      - field: "request_uri"
+        operator: "regex"
+        pattern: "(\\.\\./|\\.\\.\\\\/|%2e%2e%2f|%252e%252e%252f)"
+
+  - id: WEB_004
+    name: "Web Shell Upload Attempt"
+    description: "Attempt to upload web shell detected"
+    severity: CRITICAL
+    category: "Persistence"
+    mitre_attack_id: "T1505.003"
+    enabled: true
+    log_sources:
+      - apache
+    conditions:
+      - field: "request_method"
+        operator: "equals"
+        value: "POST"
+      - field: "request_uri"
+        operator: "regex"
+        pattern: "(?i)(\\.php|\\.asp|\\.aspx|\\.jsp|\\.jspx)$"
+
+  # ===================================================================
+  # ANOMALY DETECTION
+  # ===================================================================
+  - id: ANOMALY_001
+    name: "Unusual Login Time"
+    description: "Login attempt outside normal business hours"
+    severity: LOW
+    category: "Initial Access"
+    mitre_attack_id: "T1078"
+    enabled: true
+    log_sources:
+      - auth
+    conditions:
+      - field: "hour"
+        operator: "not_in_range"
+        range: [8, 18]
+
+  - id: ANOMALY_002
+    name: "Geographically Impossible Travel"
+    description: "Same user logging in from distant locations in short time"
+    severity: HIGH
+    category: "Credential Access"
+    mitre_attack_id: "T1078"
+    time_window: 3600
+    enabled: true
+    log_sources:
+      - auth
+    fields:
+      username: "user"
+      source_ip: "src_ip"
+
+# ===================================================================
+# GLOBAL SETTINGS
+# ===================================================================
+settings:
+  # Default time window for correlation (seconds)
+  default_time_window: 300
+  
+  # Minimum confidence score to generate alert (0-100)
+  min_confidence_score: 60
+  
+  # Enable/disable enrichment
+  enrichment_enabled: true
+  
+  # Alert output format
+  output_format: "json"
+  
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_level: "INFO"
+  
+  # Maximum alerts per batch
+  max_alerts_per_batch: 1000
+  
+  # Enable alert deduplication
+  deduplication_enabled: true
+  deduplication_window: 60

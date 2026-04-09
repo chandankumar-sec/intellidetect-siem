@@ -1,0 +1,2293 @@
+{
+  "generated_at": "2026-04-09T08:15:16.456426",
+  "incident_count": 38,
+  "incidents": [
+    {
+      "id": "INC_20260409081516_001",
+      "name": "Suspicious Activity from 192.168.1.100",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 63,
+      "created_at": "2026-04-09T08:15:16.453723",
+      "updated_at": "2026-04-09T08:15:16.453760",
+      "assigned_to": null,
+      "alert_count": 22,
+      "source_ips": [
+        "192.168.1.100"
+      ],
+      "dest_ips": [
+        "192.168.42.144",
+        "192.168.201.240",
+        "192.168.140.31",
+        "192.168.85.80",
+        "192.168.83.236",
+        "192.168.218.40",
+        "192.168.207.129",
+        "192.168.131.40",
+        "192.168.167.72",
+        "192.168.70.199",
+        "192.168.82.21",
+        "185.220.101.45",
+        "192.168.46.112",
+        "192.168.201.31",
+        "192.168.249.147",
+        "192.168.39.196",
+        "192.168.111.125"
+      ],
+      "users": [
+        "DOMAIN\\alice",
+        "DOMAIN\\john",
+        "DOMAIN\\bob",
+        "SYSTEM",
+        "ADMIN\\administrator"
+      ],
+      "mitre_attack_ids": [
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516435255",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435260",
+          "source_ip": "192.168.1.100",
+          "dest_ip": "192.168.111.125",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435319",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435323",
+          "source_ip": "192.168.1.100",
+          "dest_ip": "192.168.83.236",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435335",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435338",
+          "source_ip": "192.168.1.100",
+          "dest_ip": "192.168.39.196",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435420",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435424",
+          "source_ip": "192.168.1.100",
+          "dest_ip": "192.168.218.40",
+          "user": "ADMIN\\administrator",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435438",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435444",
+          "source_ip": "192.168.1.100",
+          "dest_ip": "192.168.85.80",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_002",
+      "name": "Suspicious Activity from 185.220.101.45",
+      "severity": "HIGH",
+      "status": "new",
+      "risk_score": 79,
+      "created_at": "2026-04-09T08:15:16.453780",
+      "updated_at": "2026-04-09T08:15:16.453828",
+      "assigned_to": null,
+      "alert_count": 44,
+      "source_ips": [
+        "185.220.101.45"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root",
+        "administrator",
+        "test",
+        "webadmin",
+        "oracle",
+        "john",
+        "bob",
+        "admin",
+        "alice"
+      ],
+      "mitre_attack_ids": [
+        "T1190",
+        "T1083",
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516436659",
+          "rule_id": "WEB_001",
+          "name": "SQL Injection Attempt",
+          "description": "SQL injection patterns detected in web requests",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.436672",
+          "source_ip": "185.220.101.45",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437052",
+          "rule_id": "WEB_002",
+          "name": "Cross-Site Scripting (XSS) Attempt",
+          "description": "XSS payload detected in web requests",
+          "severity": "MEDIUM",
+          "timestamp": "2026-04-09T08:15:16.437056",
+          "source_ip": "185.220.101.45",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437357",
+          "rule_id": "WEB_003",
+          "name": "Directory Traversal Attempt",
+          "description": "Path traversal attack detected",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.437361",
+          "source_ip": "185.220.101.45",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1083",
+          "category": "Discovery",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437380",
+          "rule_id": "WEB_003",
+          "name": "Directory Traversal Attempt",
+          "description": "Path traversal attack detected",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.437385",
+          "source_ip": "185.220.101.45",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1083",
+          "category": "Discovery",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438157",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438160",
+          "source_ip": "185.220.101.45",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_003",
+      "name": "Suspicious Activity from 45.33.32.156",
+      "severity": "HIGH",
+      "status": "new",
+      "risk_score": 72,
+      "created_at": "2026-04-09T08:15:16.453838",
+      "updated_at": "2026-04-09T08:15:16.453847",
+      "assigned_to": null,
+      "alert_count": 8,
+      "source_ips": [
+        "45.33.32.156"
+      ],
+      "dest_ips": [],
+      "users": [],
+      "mitre_attack_ids": [
+        "T1190",
+        "T1083"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516436683",
+          "rule_id": "WEB_001",
+          "name": "SQL Injection Attempt",
+          "description": "SQL injection patterns detected in web requests",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.436688",
+          "source_ip": "45.33.32.156",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516436709",
+          "rule_id": "WEB_001",
+          "name": "SQL Injection Attempt",
+          "description": "SQL injection patterns detected in web requests",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.436713",
+          "source_ip": "45.33.32.156",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516436722",
+          "rule_id": "WEB_001",
+          "name": "SQL Injection Attempt",
+          "description": "SQL injection patterns detected in web requests",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.436726",
+          "source_ip": "45.33.32.156",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516436752",
+          "rule_id": "WEB_001",
+          "name": "SQL Injection Attempt",
+          "description": "SQL injection patterns detected in web requests",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.436756",
+          "source_ip": "45.33.32.156",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437018",
+          "rule_id": "WEB_002",
+          "name": "Cross-Site Scripting (XSS) Attempt",
+          "description": "XSS payload detected in web requests",
+          "severity": "MEDIUM",
+          "timestamp": "2026-04-09T08:15:16.437025",
+          "source_ip": "45.33.32.156",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_004",
+      "name": "Suspicious Activity from 198.51.100.99",
+      "severity": "HIGH",
+      "status": "new",
+      "risk_score": 66,
+      "created_at": "2026-04-09T08:15:16.453855",
+      "updated_at": "2026-04-09T08:15:16.453862",
+      "assigned_to": null,
+      "alert_count": 5,
+      "source_ips": [
+        "198.51.100.99"
+      ],
+      "dest_ips": [],
+      "users": [],
+      "mitre_attack_ids": [
+        "T1190",
+        "T1083"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437096",
+          "rule_id": "WEB_002",
+          "name": "Cross-Site Scripting (XSS) Attempt",
+          "description": "XSS payload detected in web requests",
+          "severity": "MEDIUM",
+          "timestamp": "2026-04-09T08:15:16.437099",
+          "source_ip": "198.51.100.99",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1190",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437347",
+          "rule_id": "WEB_003",
+          "name": "Directory Traversal Attempt",
+          "description": "Path traversal attack detected",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.437351",
+          "source_ip": "198.51.100.99",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1083",
+          "category": "Discovery",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437392",
+          "rule_id": "WEB_003",
+          "name": "Directory Traversal Attempt",
+          "description": "Path traversal attack detected",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.437396",
+          "source_ip": "198.51.100.99",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1083",
+          "category": "Discovery",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437404",
+          "rule_id": "WEB_003",
+          "name": "Directory Traversal Attempt",
+          "description": "Path traversal attack detected",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.437408",
+          "source_ip": "198.51.100.99",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1083",
+          "category": "Discovery",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437415",
+          "rule_id": "WEB_003",
+          "name": "Directory Traversal Attempt",
+          "description": "Path traversal attack detected",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.437419",
+          "source_ip": "198.51.100.99",
+          "dest_ip": "",
+          "user": "",
+          "mitre_attack_id": "T1083",
+          "category": "Discovery",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_005",
+      "name": "Suspicious Activity from 192.168.1.13",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.453869",
+      "updated_at": "2026-04-09T08:15:16.453872",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.13"
+      ],
+      "dest_ips": [],
+      "users": [
+        "webadmin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437645",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437653",
+          "source_ip": "192.168.1.13",
+          "dest_ip": "",
+          "user": "webadmin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437913",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437916",
+          "source_ip": "192.168.1.13",
+          "dest_ip": "",
+          "user": "webadmin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_006",
+      "name": "Suspicious Activity from 192.168.1.19",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.453879",
+      "updated_at": "2026-04-09T08:15:16.453881",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.19"
+      ],
+      "dest_ips": [],
+      "users": [
+        "bob",
+        "alice"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437658",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437662",
+          "source_ip": "192.168.1.19",
+          "dest_ip": "",
+          "user": "bob",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437703",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437709",
+          "source_ip": "192.168.1.19",
+          "dest_ip": "",
+          "user": "alice",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_007",
+      "name": "Suspicious Activity from 192.168.1.36",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.453888",
+      "updated_at": "2026-04-09T08:15:16.453889",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.36"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437666",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437670",
+          "source_ip": "192.168.1.36",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_008",
+      "name": "Suspicious Activity from 192.168.1.24",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.453896",
+      "updated_at": "2026-04-09T08:15:16.453897",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.24"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437682",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437686",
+          "source_ip": "192.168.1.24",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_009",
+      "name": "Suspicious Activity from 192.168.1.33",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.453903",
+      "updated_at": "2026-04-09T08:15:16.453908",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.33"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437690",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437697",
+          "source_ip": "192.168.1.33",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_010",
+      "name": "Suspicious Activity from 192.168.1.15",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.453918",
+      "updated_at": "2026-04-09T08:15:16.453921",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.15"
+      ],
+      "dest_ips": [],
+      "users": [
+        "webadmin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437716",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437722",
+          "source_ip": "192.168.1.15",
+          "dest_ip": "",
+          "user": "webadmin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_011",
+      "name": "Suspicious Activity from 192.168.1.8",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.453929",
+      "updated_at": "2026-04-09T08:15:16.453932",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.8"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root",
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437728",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437735",
+          "source_ip": "192.168.1.8",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438072",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438076",
+          "source_ip": "192.168.1.8",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_012",
+      "name": "Suspicious Activity from 192.168.1.4",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.453939",
+      "updated_at": "2026-04-09T08:15:16.453941",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.4"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown",
+        "john"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437741",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437747",
+          "source_ip": "192.168.1.4",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438054",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438061",
+          "source_ip": "192.168.1.4",
+          "dest_ip": "",
+          "user": "john",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_013",
+      "name": "Suspicious Activity from 192.168.1.31",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 19,
+      "created_at": "2026-04-09T08:15:16.453963",
+      "updated_at": "2026-04-09T08:15:16.453967",
+      "assigned_to": null,
+      "alert_count": 3,
+      "source_ips": [
+        "192.168.1.31"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown",
+        "admin",
+        "john"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437760",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437766",
+          "source_ip": "192.168.1.31",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437920",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437924",
+          "source_ip": "192.168.1.31",
+          "dest_ip": "",
+          "user": "john",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438127",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438130",
+          "source_ip": "192.168.1.31",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_014",
+      "name": "Suspicious Activity from 192.168.1.40",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.453973",
+      "updated_at": "2026-04-09T08:15:16.453975",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.40"
+      ],
+      "dest_ips": [],
+      "users": [
+        "bob"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437771",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437774",
+          "source_ip": "192.168.1.40",
+          "dest_ip": "",
+          "user": "bob",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_015",
+      "name": "Suspicious Activity from 192.168.1.41",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.453982",
+      "updated_at": "2026-04-09T08:15:16.453985",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.41"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437778",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437782",
+          "source_ip": "192.168.1.41",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437793",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437797",
+          "source_ip": "192.168.1.41",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_016",
+      "name": "Suspicious Activity from 192.168.1.25",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.453992",
+      "updated_at": "2026-04-09T08:15:16.453993",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.25"
+      ],
+      "dest_ips": [],
+      "users": [
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437786",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437789",
+          "source_ip": "192.168.1.25",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_017",
+      "name": "Suspicious Activity from 192.168.1.48",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454000",
+      "updated_at": "2026-04-09T08:15:16.454001",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.48"
+      ],
+      "dest_ips": [],
+      "users": [
+        "webadmin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437801",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437804",
+          "source_ip": "192.168.1.48",
+          "dest_ip": "",
+          "user": "webadmin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_018",
+      "name": "Suspicious Activity from 192.168.1.7",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.454008",
+      "updated_at": "2026-04-09T08:15:16.454010",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.7"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437808",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437812",
+          "source_ip": "192.168.1.7",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437982",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437986",
+          "source_ip": "192.168.1.7",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_019",
+      "name": "Suspicious Activity from 192.168.1.35",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454017",
+      "updated_at": "2026-04-09T08:15:16.454018",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.35"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437824",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437827",
+          "source_ip": "192.168.1.35",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_020",
+      "name": "Suspicious Activity from 192.168.1.20",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454025",
+      "updated_at": "2026-04-09T08:15:16.454026",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.20"
+      ],
+      "dest_ips": [],
+      "users": [
+        "alice"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437831",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437835",
+          "source_ip": "192.168.1.20",
+          "dest_ip": "",
+          "user": "alice",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_021",
+      "name": "Suspicious Activity from 192.168.1.9",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 19,
+      "created_at": "2026-04-09T08:15:16.454033",
+      "updated_at": "2026-04-09T08:15:16.454037",
+      "assigned_to": null,
+      "alert_count": 3,
+      "source_ips": [
+        "192.168.1.9"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown",
+        "admin",
+        "john"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437839",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437842",
+          "source_ip": "192.168.1.9",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438024",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438028",
+          "source_ip": "192.168.1.9",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438039",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438043",
+          "source_ip": "192.168.1.9",
+          "dest_ip": "",
+          "user": "john",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_022",
+      "name": "Suspicious Activity from 192.168.1.1",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.454046",
+      "updated_at": "2026-04-09T08:15:16.454049",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.1"
+      ],
+      "dest_ips": [],
+      "users": [
+        "root",
+        "alice"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437876",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437879",
+          "source_ip": "192.168.1.1",
+          "dest_ip": "",
+          "user": "root",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438134",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438138",
+          "source_ip": "192.168.1.1",
+          "dest_ip": "",
+          "user": "alice",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_023",
+      "name": "Suspicious Activity from 192.168.1.14",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 17,
+      "created_at": "2026-04-09T08:15:16.454055",
+      "updated_at": "2026-04-09T08:15:16.454058",
+      "assigned_to": null,
+      "alert_count": 2,
+      "source_ips": [
+        "192.168.1.14"
+      ],
+      "dest_ips": [],
+      "users": [
+        "bob",
+        "alice"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437905",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437909",
+          "source_ip": "192.168.1.14",
+          "dest_ip": "",
+          "user": "bob",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516437942",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437955",
+          "source_ip": "192.168.1.14",
+          "dest_ip": "",
+          "user": "alice",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_024",
+      "name": "Suspicious Activity from 192.168.1.26",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454064",
+      "updated_at": "2026-04-09T08:15:16.454066",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.26"
+      ],
+      "dest_ips": [],
+      "users": [
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437927",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437931",
+          "source_ip": "192.168.1.26",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_025",
+      "name": "Suspicious Activity from 192.168.1.43",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454073",
+      "updated_at": "2026-04-09T08:15:16.454074",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.43"
+      ],
+      "dest_ips": [],
+      "users": [
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437935",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437938",
+          "source_ip": "192.168.1.43",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_026",
+      "name": "Suspicious Activity from 192.168.1.16",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454081",
+      "updated_at": "2026-04-09T08:15:16.454083",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.16"
+      ],
+      "dest_ips": [],
+      "users": [
+        "webadmin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437967",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437971",
+          "source_ip": "192.168.1.16",
+          "dest_ip": "",
+          "user": "webadmin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_027",
+      "name": "Suspicious Activity from 192.168.1.18",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 19,
+      "created_at": "2026-04-09T08:15:16.454090",
+      "updated_at": "2026-04-09T08:15:16.454093",
+      "assigned_to": null,
+      "alert_count": 3,
+      "source_ips": [
+        "192.168.1.18"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown",
+        "admin",
+        "john"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437975",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.437978",
+          "source_ip": "192.168.1.18",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438065",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438069",
+          "source_ip": "192.168.1.18",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516438142",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438146",
+          "source_ip": "192.168.1.18",
+          "dest_ip": "",
+          "user": "john",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_028",
+      "name": "Suspicious Activity from 192.168.1.32",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454099",
+      "updated_at": "2026-04-09T08:15:16.454101",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.32"
+      ],
+      "dest_ips": [],
+      "users": [
+        "unknown"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516437997",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438001",
+          "source_ip": "192.168.1.32",
+          "dest_ip": "",
+          "user": "unknown",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_029",
+      "name": "Suspicious Activity from 192.168.1.21",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454107",
+      "updated_at": "2026-04-09T08:15:16.454109",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.21"
+      ],
+      "dest_ips": [],
+      "users": [
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516438005",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438008",
+          "source_ip": "192.168.1.21",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_030",
+      "name": "Suspicious Activity from 192.168.1.12",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454115",
+      "updated_at": "2026-04-09T08:15:16.454116",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.12"
+      ],
+      "dest_ips": [],
+      "users": [
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516438032",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438036",
+          "source_ip": "192.168.1.12",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_031",
+      "name": "Suspicious Activity from 192.168.1.10",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454123",
+      "updated_at": "2026-04-09T08:15:16.454124",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.10"
+      ],
+      "dest_ips": [],
+      "users": [
+        "john"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516438047",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438051",
+          "source_ip": "192.168.1.10",
+          "dest_ip": "",
+          "user": "john",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_032",
+      "name": "Suspicious Activity from 192.168.1.38",
+      "severity": "LOW",
+      "status": "new",
+      "risk_score": 15,
+      "created_at": "2026-04-09T08:15:16.454130",
+      "updated_at": "2026-04-09T08:15:16.454131",
+      "assigned_to": null,
+      "alert_count": 1,
+      "source_ips": [
+        "192.168.1.38"
+      ],
+      "dest_ips": [],
+      "users": [
+        "admin"
+      ],
+      "mitre_attack_ids": [
+        "T1078"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516438149",
+          "rule_id": "ANOMALY_001",
+          "name": "Unusual Login Time",
+          "description": "Login attempt outside normal business hours",
+          "severity": "LOW",
+          "timestamp": "2026-04-09T08:15:16.438153",
+          "source_ip": "192.168.1.38",
+          "dest_ip": "",
+          "user": "admin",
+          "mitre_attack_id": "T1078",
+          "category": "Initial Access",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_033",
+      "name": "Targeted Attack Against User: DOMAIN\\john",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 66,
+      "created_at": "2026-04-09T08:15:16.454198",
+      "updated_at": "2026-04-09T08:15:16.454375",
+      "assigned_to": null,
+      "alert_count": 21,
+      "source_ips": [],
+      "dest_ips": [],
+      "users": [
+        "DOMAIN\\john"
+      ],
+      "mitre_attack_ids": [
+        "T1059.001",
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516434502",
+          "rule_id": "PROC_EXEC_001",
+          "name": "Suspicious PowerShell Execution",
+          "description": "PowerShell with encoded command or bypass parameters",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434524",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1059.001",
+          "category": "Execution",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434540",
+          "rule_id": "PROC_EXEC_001",
+          "name": "Suspicious PowerShell Execution",
+          "description": "PowerShell with encoded command or bypass parameters",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434547",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1059.001",
+          "category": "Execution",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434557",
+          "rule_id": "PROC_EXEC_001",
+          "name": "Suspicious PowerShell Execution",
+          "description": "PowerShell with encoded command or bypass parameters",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434561",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1059.001",
+          "category": "Execution",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435280",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435284",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435311",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435315",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\john",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_034",
+      "name": "Targeted Attack Against User: ADMIN\\administrator",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 66,
+      "created_at": "2026-04-09T08:15:16.454393",
+      "updated_at": "2026-04-09T08:15:16.454593",
+      "assigned_to": null,
+      "alert_count": 21,
+      "source_ips": [],
+      "dest_ips": [],
+      "users": [
+        "ADMIN\\administrator"
+      ],
+      "mitre_attack_ids": [
+        "T1218",
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516434617",
+          "rule_id": "PROC_EXEC_002",
+          "name": "Living Off The Land Binary (LOLBin)",
+          "description": "Execution of known LOLBin utilities",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434622",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "ADMIN\\administrator",
+          "mitre_attack_id": "T1218",
+          "category": "Defense Evasion",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434631",
+          "rule_id": "PROC_EXEC_002",
+          "name": "Living Off The Land Binary (LOLBin)",
+          "description": "Execution of known LOLBin utilities",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434635",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "ADMIN\\administrator",
+          "mitre_attack_id": "T1218",
+          "category": "Defense Evasion",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434650",
+          "rule_id": "PROC_EXEC_002",
+          "name": "Living Off The Land Binary (LOLBin)",
+          "description": "Execution of known LOLBin utilities",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434654",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "ADMIN\\administrator",
+          "mitre_attack_id": "T1218",
+          "category": "Defense Evasion",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434658",
+          "rule_id": "PROC_EXEC_002",
+          "name": "Living Off The Land Binary (LOLBin)",
+          "description": "Execution of known LOLBin utilities",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434662",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "ADMIN\\administrator",
+          "mitre_attack_id": "T1218",
+          "category": "Defense Evasion",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434666",
+          "rule_id": "PROC_EXEC_002",
+          "name": "Living Off The Land Binary (LOLBin)",
+          "description": "Execution of known LOLBin utilities",
+          "severity": "HIGH",
+          "timestamp": "2026-04-09T08:15:16.434670",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "ADMIN\\administrator",
+          "mitre_attack_id": "T1218",
+          "category": "Defense Evasion",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_035",
+      "name": "Targeted Attack Against User: SYSTEM",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 66,
+      "created_at": "2026-04-09T08:15:16.454609",
+      "updated_at": "2026-04-09T08:15:16.454835",
+      "assigned_to": null,
+      "alert_count": 26,
+      "source_ips": [],
+      "dest_ips": [],
+      "users": [
+        "SYSTEM"
+      ],
+      "mitre_attack_ids": [
+        "T1134",
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516434810",
+          "rule_id": "PRIVESC_001",
+          "name": "Token Impersonation",
+          "description": "Potential token impersonation attempt detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.434814",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "SYSTEM",
+          "mitre_attack_id": "T1134",
+          "category": "Privilege Escalation",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434819",
+          "rule_id": "PRIVESC_001",
+          "name": "Token Impersonation",
+          "description": "Potential token impersonation attempt detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.434823",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "SYSTEM",
+          "mitre_attack_id": "T1134",
+          "category": "Privilege Escalation",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434829",
+          "rule_id": "PRIVESC_001",
+          "name": "Token Impersonation",
+          "description": "Potential token impersonation attempt detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.434833",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "SYSTEM",
+          "mitre_attack_id": "T1134",
+          "category": "Privilege Escalation",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434838",
+          "rule_id": "PRIVESC_001",
+          "name": "Token Impersonation",
+          "description": "Potential token impersonation attempt detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.434842",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "SYSTEM",
+          "mitre_attack_id": "T1134",
+          "category": "Privilege Escalation",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516434852",
+          "rule_id": "PRIVESC_001",
+          "name": "Token Impersonation",
+          "description": "Potential token impersonation attempt detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.434856",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "SYSTEM",
+          "mitre_attack_id": "T1134",
+          "category": "Privilege Escalation",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_036",
+      "name": "Targeted Attack Against User: DOMAIN\\admin",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 66,
+      "created_at": "2026-04-09T08:15:16.454845",
+      "updated_at": "2026-04-09T08:15:16.454987",
+      "assigned_to": null,
+      "alert_count": 14,
+      "source_ips": [],
+      "dest_ips": [],
+      "users": [
+        "DOMAIN\\admin"
+      ],
+      "mitre_attack_ids": [
+        "T1021.002",
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516435164",
+          "rule_id": "LATERAL_003",
+          "name": "PsExec Remote Execution",
+          "description": "PsExec or similar remote execution tool detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435174",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\admin",
+          "mitre_attack_id": "T1021.002",
+          "category": "Lateral Movement",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435185",
+          "rule_id": "LATERAL_003",
+          "name": "PsExec Remote Execution",
+          "description": "PsExec or similar remote execution tool detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435190",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\admin",
+          "mitre_attack_id": "T1021.002",
+          "category": "Lateral Movement",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435194",
+          "rule_id": "LATERAL_003",
+          "name": "PsExec Remote Execution",
+          "description": "PsExec or similar remote execution tool detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435198",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\admin",
+          "mitre_attack_id": "T1021.002",
+          "category": "Lateral Movement",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435203",
+          "rule_id": "LATERAL_003",
+          "name": "PsExec Remote Execution",
+          "description": "PsExec or similar remote execution tool detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435207",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\admin",
+          "mitre_attack_id": "T1021.002",
+          "category": "Lateral Movement",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435212",
+          "rule_id": "LATERAL_003",
+          "name": "PsExec Remote Execution",
+          "description": "PsExec or similar remote execution tool detected",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435216",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\admin",
+          "mitre_attack_id": "T1021.002",
+          "category": "Lateral Movement",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_037",
+      "name": "Targeted Attack Against User: DOMAIN\\alice",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 63,
+      "created_at": "2026-04-09T08:15:16.455000",
+      "updated_at": "2026-04-09T08:15:16.455209",
+      "assigned_to": null,
+      "alert_count": 12,
+      "source_ips": [],
+      "dest_ips": [],
+      "users": [
+        "DOMAIN\\alice"
+      ],
+      "mitre_attack_ids": [
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516435240",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435246",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435303",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435307",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435412",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435416",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435472",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435478",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435554",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435560",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\alice",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    },
+    {
+      "id": "INC_20260409081516_038",
+      "name": "Targeted Attack Against User: DOMAIN\\bob",
+      "severity": "CRITICAL",
+      "status": "new",
+      "risk_score": 59,
+      "created_at": "2026-04-09T08:15:16.455220",
+      "updated_at": "2026-04-09T08:15:16.455318",
+      "assigned_to": null,
+      "alert_count": 8,
+      "source_ips": [],
+      "dest_ips": [],
+      "users": [
+        "DOMAIN\\bob"
+      ],
+      "mitre_attack_ids": [
+        "T1204"
+      ],
+      "alerts": [
+        {
+          "id": "ALERT_20260409081516435273",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435277",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\bob",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435357",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435361",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\bob",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435365",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435369",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\bob",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435397",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435401",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\bob",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        },
+        {
+          "id": "ALERT_20260409081516435640",
+          "rule_id": "MALWARE_001",
+          "name": "Known Malicious Hash",
+          "description": "File hash matches known malware signature",
+          "severity": "CRITICAL",
+          "timestamp": "2026-04-09T08:15:16.435643",
+          "source_ip": "",
+          "dest_ip": "",
+          "user": "DOMAIN\\bob",
+          "mitre_attack_id": "T1204",
+          "category": "Malware",
+          "confidence": 80,
+          "event_count": 1
+        }
+      ]
+    }
+  ]
+}
