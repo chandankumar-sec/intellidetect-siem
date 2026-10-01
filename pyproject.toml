@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intellidetect"
+version = "2.0.0"
+description = "Detection-engineering and alert-triage pipeline for SOC analysts: Sigma rules, stateful detections, incident correlation, explainable risk scoring."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Chandan Kumar" }]
+keywords = ["soc", "siem", "sigma", "mitre-attack", "detection-engineering", "blue-team"]
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.4"]
+
+[project.scripts]
+intellidetect = "intellidetect.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+intellidetect = ["rules/*.yml", "rules/sigma/*.yml", "data/*.yml", "data/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["archive"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+"scripts/*" = ["E501"]
+"src/intellidetect/simulator.py" = ["E501"]
+"src/intellidetect/dashboard.py" = ["E501"]

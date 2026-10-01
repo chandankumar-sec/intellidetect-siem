@@ -1,0 +1,26 @@
+title: PsExec Style Remote Service Execution
+id: 5ddc7028-9829-59f9-bbf3-e20606f2324b
+name: IDT-SG-005
+status: stable
+description: |
+    psexec.exe, PSEXESVC or paexec on a host indicates remote execution over SMB, a staple of lateral movement.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.lateral_movement
+    - attack.t1021.002
+    - attack.t1569.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        - Image|endswith:
+              - '\psexec.exe'
+              - '\psexesvc.exe'
+              - '\paexec.exe'
+        - CommandLine|contains: 'psexec'
+    condition: selection
+falsepositives:
+    - Sysadmins using Sysinternals PsExec (keep an approved-use list)
+level: high

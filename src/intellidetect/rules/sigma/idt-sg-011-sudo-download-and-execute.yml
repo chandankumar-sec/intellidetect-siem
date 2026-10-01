@@ -1,0 +1,30 @@
+title: Sudo Used to Download and Execute a Script
+id: 150bf671-58a5-5995-84a3-75311018632d
+name: IDT-SG-011
+status: stable
+description: |
+    A sudo command that pipes curl or wget output into a shell downloads and runs remote code as root.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.execution
+    - attack.t1059.004
+    - attack.t1105
+logsource:
+    service: sudo
+    product: linux
+detection:
+    selection_dl:
+        command|contains:
+            - 'curl '
+            - 'wget '
+    selection_exec:
+        command|contains:
+            - '| bash'
+            - '| sh'
+            - '|bash'
+            - '|sh'
+    condition: selection_dl and selection_exec
+falsepositives:
+    - Documented installers (for example package manager bootstrap scripts)
+level: high

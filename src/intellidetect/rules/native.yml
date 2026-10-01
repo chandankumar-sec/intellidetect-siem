@@ -1,0 +1,125 @@
+# Stateful detections that Sigma's single-event model cannot express.
+# Types: threshold | distinct | sequence | beacon  (see intellidetect/engine.py)
+# Selection syntax: field|modifier: value   (contains, startswith, endswith, re, gte, is_public, in_list)
+
+- id: IDT-001
+  title: SSH Brute Force From Single Source
+  severity: high
+  tactic: Credential Access
+  technique: T1110.001
+  description: Many failed SSH logins from one source address in a short window.
+  type: threshold
+  match: { kind: auth_failure }
+  exclude: { "src_ip|in_list": trusted_scanners }
+  group_by: src_ip
+  count: 8
+  window: 120
+
+- id: IDT-002
+  title: Password Spraying (Many Accounts, One Source)
+  severity: high
+  tactic: Credential Access
+  technique: T1110.003
+  description: One source tried failed logins against many different accounts.
+  type: distinct
+  match: { kind: auth_failure }
+  exclude: { "src_ip|in_list": trusted_scanners }
+  group_by: src_ip
+  distinct: user
+  count: 5
+  window: 300
+
+- id: IDT-003
+  title: Successful Login After Brute Force
+  severity: critical
+  tactic: Initial Access
+  technique: T1078
+  description: >
+    A login succeeded from a source that had just produced repeated failures.
+    Treat the account as compromised until proven otherwise.
+  type: sequence
+  match: { kind: auth_success }
+  preceded_by:
+    match: { kind: auth_failure }
+    count: 5
+  group_by: src_ip
+  window: 600
+  confidence: 90
+
+- id: IDT-004
+  title: Port Scan (Many Ports, One Source)
+  severity: medium
+  tactic: Discovery
+  technique: T1046
+  description: One source probed many distinct destination ports and was denied by the firewall.
+  type: distinct
+  match: { kind: fw_deny }
+  exclude: { "src_ip|in_list": trusted_scanners }
+  group_by: src_ip
+  distinct: dst_port
+  count: 15
+  window: 60
+
+- id: IDT-005
+  title: Internal Service Sweep (Many Hosts, Admin Ports)
+  severity: high
+  tactic: Discovery
+  technique: T1046
+  description: >
+    One internal host connected to administrative ports (SSH, SMB, RDP, WinRM) on many other
+    hosts, which is typical of post-compromise network discovery.
+  type: distinct
+  match:
+    kind: [fw_allow, fw_deny]
+    dst_port: [22, 135, 445, 3389, 5985]
+    "dst_ip|is_public": false
+  exclude: { "src_ip|in_list": trusted_scanners }
+  group_by: src_ip
+  distinct: dst_ip
+  count: 8
+  window: 120
+
+- id: IDT-006
+  title: Periodic Outbound Connections (Possible C2 Beaconing)
+  severity: high
+  tactic: Command and Control
+  technique: T1071.001
+  description: A host connects to the same external address at regular intervals.
+  type: beacon
+  match:
+    kind: network_connect
+    "dst_ip|is_public": true
+  exclude: { "dst_ip|in_list": known_good_destinations }
+  count: 8
+  window: 1800
+  max_jitter: 0.25
+  min_interval: 10
+  max_interval: 900
+
+- id: IDT-007
+  title: Large Outbound Data Transfer
+  severity: high
+  tactic: Exfiltration
+  technique: T1048
+  description: Unusually large volume sent from one internal host to an external destination.
+  type: threshold
+  match:
+    kind: fw_allow
+    "dst_ip|is_public": true
+  exclude: { "dst_ip|in_list": backup_destinations }
+  group_by: src_ip
+  sum: bytes
+  count: 100000000
+  window: 600
+
+- id: IDT-008
+  title: Web Scanning (Burst of 404 Responses)
+  severity: medium
+  tactic: Reconnaissance
+  technique: T1595
+  description: One client generated many "not found" responses, typical of directory brute forcing.
+  type: threshold
+  match: { kind: http_request, status: 404 }
+  group_by: src_ip
+  count: 25
+  window: 60

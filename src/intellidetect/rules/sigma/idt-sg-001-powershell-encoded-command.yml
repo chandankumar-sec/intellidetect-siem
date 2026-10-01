@@ -1,0 +1,30 @@
+title: Suspicious Encoded PowerShell Command Line
+id: a5d838e2-a715-5256-aa29-c7f89b1a53d5
+name: IDT-SG-001
+status: stable
+description: |
+    Detects PowerShell started with an encoded command or a hidden, execution-policy-bypass launch. Common in phishing payload stagers and living-off-the-land intrusions.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.execution
+    - attack.t1059.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    selection_flags:
+        CommandLine|contains:
+            - ' -enc '
+            - ' -encodedcommand '
+            - '-w hidden'
+            - '-windowstyle hidden'
+            - 'bypass'
+    condition: selection_img and selection_flags
+falsepositives:
+    - Admin scripts that use -ExecutionPolicy Bypass (tune by parent process or signer)
+level: high

@@ -1,0 +1,25 @@
+title: DNS Query to Abuse-Prone Top-Level Domain
+id: cc3213ce-afb9-5c7f-a39d-c7b23833fe3f
+name: IDT-SG-012
+status: stable
+description: |
+    Queries for .top, .xyz, .click or .zip domains are overrepresented in malware C2 and phishing infrastructure. Treat as a lead, not a verdict.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.command_and_control
+    - attack.t1071.001
+logsource:
+    category: dns_query
+    product: windows
+detection:
+    selection:
+        QueryName|endswith:
+            - '.top'
+            - '.xyz'
+            - '.click'
+            - '.zip'
+    condition: selection
+falsepositives:
+    - Legitimate sites on these TLDs
+level: low

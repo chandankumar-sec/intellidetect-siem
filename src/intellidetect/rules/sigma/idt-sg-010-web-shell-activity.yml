@@ -1,0 +1,28 @@
+title: Web Shell Upload or Command Parameter Access
+id: 3cb379f4-c502-558f-bf51-97c553dc78f9
+name: IDT-SG-010
+status: stable
+description: |
+    Requests to a script inside an upload directory or passing a command parameter indicate a web shell has been planted or is being used.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.persistence
+    - attack.t1505.003
+logsource:
+    category: webserver
+detection:
+    selection_upload:
+        uri_path|contains: '/uploads/'
+        uri_path|endswith:
+            - '.php'
+            - '.jsp'
+            - '.aspx'
+    selection_cmd:
+        uri_query|contains:
+            - 'cmd='
+            - 'exec='
+    condition: selection_upload or selection_cmd
+falsepositives:
+    - None expected
+level: critical

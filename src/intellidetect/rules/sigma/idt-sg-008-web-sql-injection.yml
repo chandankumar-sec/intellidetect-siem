@@ -1,0 +1,26 @@
+title: SQL Injection Pattern in Web Request
+id: 7cbb3d9e-d3c2-56f2-b2ae-b24f35e1aec3
+name: IDT-SG-008
+status: stable
+description: |
+    Common SQL injection payloads (UNION SELECT, boolean tautologies, time-based functions) in the request URL.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.initial_access
+    - attack.t1190
+logsource:
+    category: webserver
+detection:
+    selection:
+        url|contains:
+            - 'union select'
+            - 'union%20select'
+            - "' or 1=1"
+            - "'%20or%201=1"
+            - 'sleep('
+            - 'information_schema'
+    condition: selection
+falsepositives:
+    - Security scanners run by the owner of the application
+level: high

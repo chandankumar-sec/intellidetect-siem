@@ -1,0 +1,26 @@
+title: Account and Domain Discovery Commands
+id: ef9ebabe-3adc-5047-bd9f-1141753a3b30
+name: IDT-SG-006
+status: stable
+description: |
+    net user /domain, nltest and whoami /priv are typically run in quick succession by an attacker orienting inside a network.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.discovery
+    - attack.t1087
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        CommandLine|contains:
+            - 'net user /domain'
+            - 'net group "domain admins"'
+            - 'nltest /dclist'
+            - 'whoami /priv'
+            - 'whoami /groups'
+    condition: selection
+falsepositives:
+    - Help-desk and admin troubleshooting
+level: medium

@@ -1,0 +1,26 @@
+title: Certutil Used to Download or Decode Files
+id: aa970ee9-fe07-5f0d-a8a8-680666551901
+name: IDT-SG-003
+status: stable
+description: |
+    certutil.exe with -urlcache or -decode is a well known way to fetch and unpack payloads while avoiding custom download tools.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.command_and_control
+    - attack.t1105
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        Image|endswith: '\certutil.exe'
+    selection_args:
+        CommandLine|contains:
+            - 'urlcache'
+            - '-decode'
+            - 'verifyctl'
+    condition: selection_img and selection_args
+falsepositives:
+    - Administrators decoding certificates (rare)
+level: high

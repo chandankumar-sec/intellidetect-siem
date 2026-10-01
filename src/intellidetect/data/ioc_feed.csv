@@ -1,0 +1,7 @@
+indicator,type,threat,confidence,source
+203.0.113.45,ip,SSH brute-force infrastructure,80,synthetic-demo-feed
+203.0.113.77,ip,Web exploitation scanner,70,synthetic-demo-feed
+198.51.100.99,ip,Mass scanner,60,synthetic-demo-feed
+192.0.2.77,ip,Malware C2 server,95,synthetic-demo-feed
+192.0.2.99,ip,Data staging / exfiltration drop,90,synthetic-demo-feed
+update-cdn-sync.top,domain,Malware C2 domain,90,synthetic-demo-feed

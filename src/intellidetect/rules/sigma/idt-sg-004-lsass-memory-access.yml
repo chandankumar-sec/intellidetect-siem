@@ -1,0 +1,31 @@
+title: Process Accessing LSASS Memory
+id: a5c5525c-5606-56ec-9b41-aa3edf739e76
+name: IDT-SG-004
+status: stable
+description: |
+    A non-system process opening lsass.exe with read or dump access rights indicates credential dumping (Mimikatz, procdump, comsvcs MiniDump).
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.credential_access
+    - attack.t1003.001
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection:
+        TargetImage|endswith: '\lsass.exe'
+        GrantedAccess:
+            - '0x1010'
+            - '0x1410'
+            - '0x1438'
+            - '0x143a'
+            - '0x1fffff'
+    filter_system:
+        Image|startswith:
+            - 'C:\Windows\System32\'
+            - 'C:\Program Files\Windows Defender\'
+    condition: selection and not filter_system
+falsepositives:
+    - EDR and AV agents reading LSASS (add their paths to the filter)
+level: critical

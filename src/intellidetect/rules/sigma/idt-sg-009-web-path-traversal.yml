@@ -1,0 +1,24 @@
+title: Path Traversal Attempt in Web Request
+id: 52135649-fa1e-59b9-86a0-f6e7ac2b2b7a
+name: IDT-SG-009
+status: stable
+description: |
+    Directory traversal sequences (including URL-encoded variants) aimed at reading files outside the web root.
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.initial_access
+    - attack.t1190
+logsource:
+    category: webserver
+detection:
+    selection:
+        url|contains:
+            - '../../'
+            - '..%2f'
+            - '%2e%2e%2f'
+            - '/etc/passwd'
+    condition: selection
+falsepositives:
+    - None expected
+level: high

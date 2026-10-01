@@ -1,0 +1,34 @@
+title: Office Application Spawning Script Interpreter or Shell
+id: 3bb3a1a0-4423-58c3-8651-4be82a8ccb05
+name: IDT-SG-002
+status: stable
+description: |
+    A Microsoft Office process launching cmd, PowerShell, wscript, cscript or mshta is a classic malicious-document execution pattern (macro or exploit).
+author: Chandan Kumar
+date: 2026/09/30
+tags:
+    - attack.initial_access
+    - attack.t1566.001
+    - attack.t1204.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_parent:
+        ParentImage|endswith:
+            - '\winword.exe'
+            - '\excel.exe'
+            - '\powerpnt.exe'
+            - '\outlook.exe'
+    selection_child:
+        Image|endswith:
+            - '\cmd.exe'
+            - '\powershell.exe'
+            - '\pwsh.exe'
+            - '\wscript.exe'
+            - '\cscript.exe'
+            - '\mshta.exe'
+    condition: selection_parent and selection_child
+falsepositives:
+    - Rare: some legacy Office add-ins launch cmd.exe
+level: high

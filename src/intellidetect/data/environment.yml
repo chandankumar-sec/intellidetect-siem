@@ -1,0 +1,23 @@
+# Environment context used by the detection engine and the risk scorer.
+# Replace with your own inventory; hostnames are matched case-insensitively.
+
+lists:
+  # Authorized scanners and monitors: excluded from scan / brute-force detections.
+  trusted_scanners: ["10.0.5.5"]
+  # Approved off-site backup targets: excluded from the large-transfer detection.
+  backup_destinations: ["34.120.55.8"]
+  # Destinations with legitimate periodic traffic (update checks, telemetry).
+  known_good_destinations: ["13.107.42.14", "20.190.151.9"]
+
+assets:
+  - { host: DC01,       ip: 10.0.2.5,   criticality: critical, role: Domain controller }
+  - { host: FILESRV01,  ip: 10.0.2.10,  criticality: critical, role: File server }
+  - { host: bastion01,  ip: 10.0.1.5,   criticality: high,     role: SSH jump host }
+  - { host: web01,      ip: 10.0.3.10,  criticality: high,     role: Public web server }
+  - { host: backup01,   ip: 10.0.2.50,  criticality: medium,   role: Backup server }
+  - { host: vulnscan01, ip: 10.0.5.5,   criticality: low,      role: Vulnerability scanner }
+  - { host: WS-ALICE,   ip: 10.0.10.21, criticality: medium,   role: Finance workstation }
+  - { host: WS-BOB,     ip: 10.0.10.22, criticality: low,      role: Workstation }
+  - { host: WS-CAROL,   ip: 10.0.10.23, criticality: low,      role: Workstation }
+  - { host: WS-DAVE,    ip: 10.0.10.24, criticality: low,      role: Workstation }
+  - { host: WS-ERIN,    ip: 10.0.10.25, criticality: low,      role: Workstation }
