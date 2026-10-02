@@ -1,6 +1,6 @@
 # IntelliDetect
 
-[![CI](https://github.com/alexbro1331/intellidetect-siem/actions/workflows/ci.yml/badge.svg)](https://github.com/alexbro1331/intellidetect-siem/actions/workflows/ci.yml)
+[![CI](https://github.com/chandankumar-sec/intellidetect-siem/actions/workflows/ci.yml/badge.svg)](https://github.com/chandankumar-sec/intellidetect-siem/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-mapped-red)
@@ -18,7 +18,7 @@ recommended response.
 ## Quick start
 
 ```bash
-git clone https://github.com/alexbro1331/intellidetect-siem
+git clone https://github.com/chandankumar-sec/intellidetect-siem
 cd intellidetect-siem
 pip install -e .
 
